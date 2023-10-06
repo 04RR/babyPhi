@@ -10,7 +10,6 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 warnings.filterwarnings("ignore")
 
 model_name_or_path = "lora/mathv1"
-auth_token = "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"
 rank = 16
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -24,13 +23,11 @@ model = AutoModelForCausalLM.from_pretrained(
     load_in_8bit=True,
     device_map="cuda:0",
     trust_remote_code=True,
-    token=auth_token,
     quantization_config=bnb_config,
 )
 
 tokenizer = AutoTokenizer.from_pretrained(
     model_name_or_path,
-    token=auth_token,
     # model_max_length=512,
 )
 
