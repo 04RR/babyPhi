@@ -8,19 +8,16 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 warnings.filterwarnings("ignore")
 
 model_name_or_path = "lora/mathv1"
-auth_token = "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"
 
 model = AutoModelForCausalLM.from_pretrained(
     model_name_or_path,
     load_in_8bit=True,
     device_map="cuda:0",
     trust_remote_code=True,
-    token=auth_token,
 )
 
 tokenizer = AutoTokenizer.from_pretrained(
     model_name_or_path,
-    token=auth_token,
     # model_max_length=512,
 )
 
